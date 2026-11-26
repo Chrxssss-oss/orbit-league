@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orbit League</title>
+<meta name="description" content="Orbit League is a zero-gravity VR team disc sport for Meta Quest. Grab, push, boost and throw your way to the goal.">
+<meta property="og:title" content="Orbit League">
+<meta property="og:description" content="Zero-gravity VR team disc sport for Meta Quest.">
+<meta property="og:image" content="img/cover.jpg">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #070b16; --bg2: #0d1426; --card: #121b33; --line: #1f2b4d;
+    --fg: #e8ecf6; --muted: #98a3bd; --orange: #ff8a3d; --blue: #49a6ff;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 Inter, system-ui, sans-serif; }
+  a { color: var(--blue); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  nav { position: sticky; top: 0; z-index: 10; background: rgba(7, 11, 22, 0.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: Orbitron, sans-serif; font-weight: 800; letter-spacing: 2px; color: var(--fg); text-decoration: none; }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
+  nav ul a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: 15px; }
+  nav ul a:hover { color: var(--fg); }
+  .hero { position: relative; min-height: 78vh; display: flex; align-items: flex-end; background: url(img/hero.jpg) center / cover no-repeat; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,11,22,0.15) 0%, rgba(7,11,22,0.55) 55%, var(--bg) 100%); }
+  .hero .wrap { position: relative; z-index: 1; padding-bottom: 64px; }
+  h1 { font-family: Orbitron, sans-serif; font-weight: 800; font-size: clamp(42px, 8vw, 92px); line-height: 1; margin: 0 0 12px; letter-spacing: 3px; font-style: italic; }
+  h1 .o { color: var(--orange); } h1 .b { color: var(--blue); }
+  .tag { font-size: clamp(18px, 2.4vw, 24px); color: #d7deef; max-width: 640px; margin: 0 0 28px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-block; padding: 13px 22px; border-radius: 10px; font-weight: 600; text-decoration: none; }
+  .btn.primary { background: linear-gradient(90deg, var(--orange), #ff5f2e); color: #140800; }
+  .btn.ghost { border: 1px solid #3a4a78; color: var(--fg); background: rgba(18, 27, 51, 0.6); }
+  .pill { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); border: 1px solid #2a4b7a; border-radius: 999px; padding: 4px 12px; margin-bottom: 18px; background: rgba(10, 20, 40, 0.6); }
+  section { padding: 72px 0; }
+  h2 { font-family: Orbitron, sans-serif; font-size: clamp(26px, 4vw, 38px); margin: 0 0 12px; letter-spacing: 1px; }
+  .lead { color: var(--muted); max-width: 720px; margin: 0 0 36px; }
+  .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+  .card h3 { margin: 0 0 6px; font-size: 18px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+  .card .ic { font-family: Orbitron, sans-serif; font-weight: 800; font-size: 13px; color: var(--orange); letter-spacing: 2px; margin-bottom: 10px; }
+  .card:nth-child(even) .ic { color: var(--blue); }
+  .shots { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  .shots figure { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .shots img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .shots figcaption { padding: 10px 14px; color: var(--muted); font-size: 14px; }
+  .alt { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .controls { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 14px; overflow: hidden; }
+  .controls td { padding: 12px 16px; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .controls td:first-child { font-weight: 600; white-space: nowrap; width: 38%; }
+  .controls tr:last-child td { border-bottom: 0; }
+  .two { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: start; }
+  footer { padding: 36px 0 48px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+  @media (max-width: 640px) { nav ul { display: none; } section { padding: 52px 0; } .controls td:first-child { white-space: normal; } }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#"><img src="img/icon.png" alt="">ORBIT LEAGUE</a>
+    <ul>
+      <li><a href="#play">How it plays</a></li>
+      <li><a href="#screens">Screenshots</a></li>
+      <li><a href="#controls">Controls</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="pill">Now in closed testing on Meta Quest</span>
+    <h1>ORBIT <span class="o">LE</span><span class="b">AGUE</span></h1>
+    <p class="tag">A zero-gravity VR team sport. Grab the walls, launch off your teammates, and throw the disc through the other team's hoop.</p>
+    <div class="btns">
+      <a class="btn primary" href="#contact">Join the test</a>
+      <a class="btn ghost" href="#screens">See it in action</a>
+    </div>
+  </div>
+</header>
+
+<section id="play">
+  <div class="wrap">
+    <h2>How it plays</h2>
+    <p class="lead">Two teams, one disc, no gravity. Every match starts with a launch out of the tubes and a race to the center of the arena.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">01 / MOVE</div><h3>Zero-g movement</h3><p>Grab any surface and push off. Thrusters, a back booster and an air brake let you steer mid-flight.</p></div>
+      <div class="card"><div class="ic">02 / GRAB</div><h3>Fight for the disc</h3><p>Snatch the disc by its rim with your real hands. When two players grab it at once, the stronger pull wins the 50/50.</p></div>
+      <div class="card"><div class="ic">03 / THROW</div><h3>Throw with your arm</h3><p>The harder you throw, the faster it flies. Bank shots off the walls, pass to teammates, or headbutt it in.</p></div>
+      <div class="card"><div class="ic">04 / SCORE</div><h3>2s and 3s</h3><p>Score through the hoop for 2 points, or from outside the bubble for 3. Five-minute matches, highest score wins.</p></div>
+      <div class="card"><div class="ic">05 / LAUNCH</div><h3>Launch tubes</h3><p>After every goal, both teams reset in their launch rooms. Pick a tube, wait out the 15-second countdown, and fly.</p></div>
+      <div class="card"><div class="ic">06 / HANG OUT</div><h3>Lobby and practice room</h3><p>Queue for Quick Play, host a private match with a join code, or warm up on the practice hoops.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="screens" class="alt">
+  <div class="wrap">
+    <h2>Screenshots</h2>
+    <p class="lead">Rendered from the real game arena with the in-game robot avatars.</p>
+    <div class="shots">
+      <figure><img src="img/shot1.jpg" alt="Four robots race for the disc at kickoff" loading="lazy"><figcaption>Kickoff: a 2v2 race for the disc</figcaption></figure>
+      <figure><img src="img/shot2.jpg" alt="An orange robot shoots while a blue robot dives to block at the hoop" loading="lazy"><figcaption>Shot on goal</figcaption></figure>
+      <figure><img src="img/shot3.jpg" alt="An orange robot throws a long pass across the arena" loading="lazy"><figcaption>Long pass across the arena</figcaption></figure>
+      <figure><img src="img/shot4.jpg" alt="First-person view of a robot hand reaching for the disc" loading="lazy"><figcaption>First person: reach for the disc</figcaption></figure>
+      <figure><img src="img/shot5.jpg" alt="Robots warming up in the practice room" loading="lazy"><figcaption>Practice room</figcaption></figure>
+      <figure><img src="img/cover.jpg" alt="Orbit League cover art" loading="lazy"><figcaption>Orbit League</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="controls">
+  <div class="wrap two">
+    <div>
+      <h2>Controls</h2>
+      <p class="lead">Built for Meta Quest Touch controllers. No teleporting, just your hands and some thrusters.</p>
+      <p class="lead" style="margin-bottom:0">Supported headsets: Meta Quest 2, Quest 3, Quest 3S and Quest Pro.</p>
+    </div>
+    <table class="controls">
+      <tr><td>Grip</td><td>Grab walls, players and the disc (hold it early to auto-grab)</td></tr>
+      <tr><td>Release + swing</td><td>Throw the disc or push off a wall</td></tr>
+      <tr><td>B / Y</td><td>Thrusters</td></tr>
+      <tr><td>Left stick click</td><td>Back booster (recharges every 4 seconds)</td></tr>
+      <tr><td>Right stick click</td><td>Air brake</td></tr>
+      <tr><td>Right stick</td><td>Snap turn</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="contact" class="alt">
+  <div class="wrap">
+    <h2>Join the test</h2>
+    <p class="lead">Orbit League is in invite-only testing on the Meta Horizon Store. Want in, found a bug, or have feedback? Email us with the email address on your Meta account and we'll send an invite.</p>
+    <a class="btn primary" href="mailto:chris99jose@gmail.com?subject=Orbit%20League%20test">chris99jose@gmail.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Orbit League team</span>
+    <span><a href="https://chrxssss-oss.github.io/orbit-league-privacy/">Privacy Policy</a> &middot; <a href="mailto:chris99jose@gmail.com">Contact</a></span>
+  </div>
+</footer>
+</body>
+</html>
